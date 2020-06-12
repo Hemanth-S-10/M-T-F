@@ -3,6 +3,7 @@
     <div v-for="(quiz, index) in quizez" v-show="index === questionindex" :key="index">
       <h1>{{ quiz.category }}</h1>
       <el-card>
+        <h2>Match the question in coloumn A to the answers in coloumn b by rearranging coloumn B</h2>
         <div>
           <h3 style="float:left;text-align:center;padding:40px">coloum A
             <ol>
@@ -43,11 +44,11 @@
     <div v-if="questionindex < quizez.length">
       <center>
         <el-button type="danger" v-if="questionindex > 0" v-on:click="prev">prev</el-button>&emsp;
-        <el-button type="warning" v-on:click="answer">Submit</el-button>&emsp;
+        <el-button type="warning" v-on:click="submit">Submit</el-button>&emsp;
         <el-button type="success" v-on:click="next">next</el-button>
       </center>
     </div>
-    <h1 v-if="questionindex == quizez.length">Your Total score is {{score}} / {{quizez.length}}</h1>
+    <h1 v-if="questionindex == quizez.length">Your Total score is {{score}} / {{nques}}</h1>
   </div>
 </template>
 
@@ -124,6 +125,7 @@ export default {
         this.answers[this.questionindex][i] = this.list[i].name;
       }
     },
+
     onMove({ relatedContext, draggedContext }) {
       const relatedElement = relatedContext.element;
       const draggedElement = draggedContext.element;
@@ -154,6 +156,15 @@ export default {
         }
       }
       return total;
+    },
+    nques: function() {
+      var noq = 0;
+      for (var i = 0; i < this.answers.length; i++) {
+        for (var j = 0; j < this.answers[i].length; j++) {
+          noq += 1;
+        }
+      }
+      return noq;
     }
   },
   watch: {

@@ -34,7 +34,8 @@ export default {
         type: "mtf",
         difficulty: "medium",
         question: [""],
-        correct_answers: [""]
+        correct_answers: [""],
+        correct: [""]
       },
       arr: []
     };
@@ -42,12 +43,16 @@ export default {
 
   methods: {
     add() {
+      for (var i = 0; i < this.data.opt; i++) {
+        this.data.correct[i] = this.data.correct_answers[i];
+      }
       this.arr.push({
         category: this.data.category,
         type: this.data.type,
         difficulty: this.data.difficulty,
         question: this.data.question,
-        correct_answers: this.data.correct_answers
+        correct_answers: this.data.correct_answers,
+        correct: this.data.correct
       });
       console.log(this.arr);
     },
