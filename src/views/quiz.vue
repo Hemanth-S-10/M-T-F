@@ -62,7 +62,8 @@ var quiz_questions = [
     type: "mtf",
     difficulty: "easy",
     question: ["2*3", "1*0", "5*1"],
-    correct_answers: ["6", "0", "5"]
+    correct_answers: ["6", "0", "5"],
+    correct: ["6", "0", "5"]
   }
 ];
 
@@ -150,7 +151,7 @@ export default {
       var total = 0;
       for (var i = 0; i < this.answers.length; i++) {
         for (var j = 0; j < this.answers[i].length; j++) {
-          if (this.answers[i][j] === this.quizez[i].correct_answers[j]) {
+          if (this.answers[i][j] === this.quizez[i].correct[j]) {
             total += 1;
           }
         }
